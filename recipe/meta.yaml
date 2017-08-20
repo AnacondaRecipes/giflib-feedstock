@@ -9,43 +9,26 @@ source:
   sha256: 34a7377ba834397db019e8eb122e551a49c98f49df75ec3fcc92b9a794a4f6d1
 
 build:
-  number: 0
-  skip: true  # [win and py27]
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py>=35]
+  number: 1
+  skip: True  # [win]
+  run_exports:
+    # SONAME changes at minor revs.
+    #    https://abi-laboratory.pro/tracker/timeline/giflib/
+    - {{ pin_subpackage('giflib', max_pin='x.x') }}
 
 requirements:
   build:
-    - python  # [win]
-    - vc 9   # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
-  run:
-    - vc 9   # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py>=35]
-
+    - {{ compiler('c') }}
 
 test:
   commands:
-    - gif2rgb -h    # [unix]
-    - gifbuild -h   # [unix]
-    - gifclrmp -h   # [unix]
-    - gifecho -h    # [unix]
-    - giffix -h     # [unix]
-    - gifinto -h    # [unix]
-    - giftext -h    # [unix]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
-    - gif2rgb.exe -h    # [win]
-    - gifbuild.exe -h   # [win]
-    - gifclrmp.exe -h   # [win]
-    - gifecho.exe -h    # [win]
-    - giffix.exe -h     # [win]
-    - gifinto.exe -h    # [win]
-    - giftext.exe -h    # [win]
+    - gif2rgb -h
+    - gifbuild -h
+    - gifclrmp -h
+    - gifecho -h
+    - giffix -h
+    - gifinto -h
+    - giftext -h
 
 about:
   home: http://giflib.sourceforge.net
@@ -56,3 +39,4 @@ extra:
   recipe-maintainers:
     - ocefpaf
     - 183amir
+    - msarahan
