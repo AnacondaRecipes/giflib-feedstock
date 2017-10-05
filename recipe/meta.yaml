@@ -1,35 +1,44 @@
 {% set version = "5.1.4" %}
 
 package:
-    name: giflib
-    version: {{ version }}
+  name: giflib
+  version: {{ version }}
 
 source:
-    fn: giflib-{{ version }}.tar.gz
-    url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
-    md5: 8985c9411fdb2178b89d3348da9a06b0
+  fn: giflib-{{ version }}.tar.gz
+  url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
+  md5: 8985c9411fdb2178b89d3348da9a06b0
 
 build:
-    number: 0
-    skip: True  # [win]
+  number: 1
+  skip: True  # [win]
+  run_exports:
+    # SONAME changes at minor revs.
+    #    https://abi-laboratory.pro/tracker/timeline/giflib/
+    - {{ pin_subpackage('giflib', max_pin='x.x') }}
+
+requirements:
+  build:
+    - {{ compiler('c') }}
 
 test:
-    commands:
-        - gif2rgb -h
-        - gifbuild -h
-        - gifclrmp -h
-        - gifecho -h
-        - giffix -h
-        - gifinto -h
-        - giftext -h
-        # - conda inspect linkages giflib --prefix ${CONDA_DEFAULT_ENV}  # [linux]
+  commands:
+    - gif2rgb -h
+    - gifbuild -h
+    - gifclrmp -h
+    - gifecho -h
+    - giffix -h
+    - gifinto -h
+    - giftext -h
+    # - conda inspect linkages giflib --prefix ${CONDA_DEFAULT_ENV}  # [linux]
 
 about:
-    home: http://giflib.sourceforge.net
-    license: MIT
-    summary: Library for reading and writing gif images
+  home: http://giflib.sourceforge.net
+  license: MIT
+  summary: Library for reading and writing gif images
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - 183amir
+  recipe-maintainers:
+    - ocefpaf
+    - 183amir
+    - msarahan
