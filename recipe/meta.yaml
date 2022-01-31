@@ -26,7 +26,8 @@ requirements:
     - make  # [not win]
     - git  # [win]
     - cmake
-
+    - m2-patch    # [win]
+ 
 test:
   commands:
     - gif2rgb -h
