@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: http://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
+  - url: https://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
     sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd
     patches:
       - fix_win.patch  # [win]
@@ -23,8 +23,8 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - make  # [not win]
-    - git  # [win]
+    - make        # [not win]
+    - git         # [win]
     - cmake
     - m2-patch    # [win]
  
@@ -34,11 +34,12 @@ test:
     - giffix -h
     - giftext -h
     - gifclrmp -h
-    # The following command tests that the CVE-affected executable, gif2rgb, does not exist.
-    - if gif2rgb -h; then exit 1; else exit 0; fi
+    # The following commands test that the CVE-affected executable, gif2rgb, does not exist.
+    - if gif2rgb -h; then exit 1; else exit 0; fi       # [unix]
+    - if exist gif2rgb exit 1 else exit 0               # [win]
 
 about:
-  home: http://giflib.sourceforge.net
+  home: https://giflib.sourceforge.net
   license: MIT
   license_file:
     - COPYING
