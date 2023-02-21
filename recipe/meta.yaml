@@ -42,6 +42,7 @@ test:
 about:
   home: https://giflib.sourceforge.net
   license: MIT
+  license_family: MIT
   license_file:
     - COPYING
     - getopt_LICENSE.txt  # [win]
@@ -61,3 +62,5 @@ extra:
     - msarahan
     - isuruf
     - wolfv
+    - katietz
+
