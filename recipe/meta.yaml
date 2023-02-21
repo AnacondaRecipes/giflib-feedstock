@@ -48,6 +48,13 @@ about:
     - COPYING
     - getopt_LICENSE.txt  # [win]
   summary: Library for reading and writing gif images
+  description: |
+    The GIFLIB project maintains the giflib service library, which has been pulling images
+    out of GIFs since 1989. It is deployed everywhere you can think of and some places you
+    probably can't - graphics applications and web browsers on multiple operating systems,
+    game consoles, smartphones, and likely your ATM too.
+  dev_url: https://giflib.sourceforge.net
+  doc_url: https://giflib.sourceforge.net
 
 extra:
   recipe-maintainers:
