@@ -1,3 +1,5 @@
+cd %SRC_DIR%
+
 copy %RECIPE_DIR%\\CMakeLists.txt %SRC_DIR%\\CMakeLists.txt
 mkdir build
 cd build
@@ -18,4 +20,4 @@ if errorlevel 1 exit 1
 nmake install
 if errorlevel 1 exit 13
 
-copy /b ..\stdbool.h %LIBRARY_PREFIX\include\.
+copy /b ..\stdbool.h %LIBRARY_PREFIX%\include\.
