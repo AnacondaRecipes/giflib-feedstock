@@ -1,7 +1,7 @@
-Index: giflib-5.2.1/stdbool.h
+Index: stdbool.h
 ===================================================================
 --- /dev/null
-+++ giflib-5.2.1/stdbool.h
++++ stdbool.h
 @@ -0,0 +1,17 @@
 +#ifndef _STDBOOL_H
 +#define _STDBOOL_H
