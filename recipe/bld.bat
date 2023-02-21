@@ -22,7 +22,6 @@ if errorlevel 1 exit 1
 cd %SRC_DIR%
 
 echo "copy stdbool.h %LIBRARY_PREFIX%\include ..."
-dir %LIBRARY_PREFIX%\include
-copy stdbool.h %LIBRARY_PREFIX%\include
+copy stdbool.h %LIBRARY_PREFIX%\\include
 if errorlevel 1 exit 1
 
