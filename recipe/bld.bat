@@ -18,7 +18,4 @@ if errorlevel 1 exit 1
 nmake install
 if errorlevel 1 exit 13
 
-REM Remove the executable gif2rgb and its associated man page.
-REM This executable has a CVE (CVE-2022-28506) that doesn't have a fix yet.
-del %LIBRARY_PREFIX%\bin\gif2rgb.exe
-del %LIBRARY_PREFIX%\share\man\man1\gif2rgb.1
+copy /b ..\stdbool.h %LIBRARY_PREFIX\include\.
