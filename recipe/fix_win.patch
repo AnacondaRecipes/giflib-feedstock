@@ -63,7 +63,7 @@ index ebdbd3c..44c4832 100644
  #define GIF_FONT_WIDTH  8
  #define GIF_FONT_HEIGHT 8
 -extern const unsigned char GifAsciiTable8x8[][GIF_FONT_WIDTH];
-+const unsigned char XPORT GifAsciiTable8x8[][GIF_FONT_WIDTH];
++extern const unsigned char XPORT GifAsciiTable8x8[][GIF_FONT_WIDTH];
  
  extern void GifDrawText8x8(SavedImage *Image,
                       const int x, const int y,

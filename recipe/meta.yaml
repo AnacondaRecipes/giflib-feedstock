@@ -15,7 +15,7 @@ source:
   - path: getopt.h  # [win]
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win and vc<14]
   run_exports:
     # SONAME changes at minor revs.
