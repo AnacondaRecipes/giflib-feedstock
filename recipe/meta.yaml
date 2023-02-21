@@ -8,12 +8,14 @@ source:
   - url: https://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
     sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd
     patches:
-      - fix_win.patch  # [win]
+      - fix_win.patch    # [win]
+      - stdbool_h.patch  # [win]
+      - CVE-2022-28506.patch
   # add a getopt polyfill
   - path: getopt.h  # [win]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and vc<14]
   run_exports:
     # SONAME changes at minor revs.
@@ -27,7 +29,8 @@ requirements:
     - git         # [win]
     - cmake
     - m2-patch    # [win]
- 
+    - patch       # [not win]
+
 test:
   commands:
     - gifbuild -h
