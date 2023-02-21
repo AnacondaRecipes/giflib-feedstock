@@ -9,7 +9,3 @@ if [[ "$target_platform" == linux* ]]; then
   make -C ../tests UTILS=$PWD
 fi
 make install
-# Remove the executable gif2rgb and its associated man page.
-# This executable has a CVE (CVE-2022-28506) that doesn't have a fix yet.
-rm $PREFIX/bin/gif2rgb
-rm $PREFIX/share/man/man1/gif2rgb.1
