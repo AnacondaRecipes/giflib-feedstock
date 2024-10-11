@@ -1,4 +1,4 @@
-{% set version = "5.2.1" %}
+{% set version = "5.2.2" %}
 
 package:
   name: giflib
@@ -6,16 +6,15 @@ package:
 
 source:
   - url: https://downloads.sourceforge.net/project/giflib/giflib-{{ version }}.tar.gz
-    sha256: 31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd
+    sha256: be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb
     patches:
       - fix_win.patch    # [win]
       - stdbool_h.patch  # [win]
-      - CVE-2022-28506.patch
   # add a getopt polyfill
-  - path: getopt.h  # [win]
+  - path: getopt.h       # [win]
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     # SONAME changes at minor revs.
@@ -26,10 +25,8 @@ requirements:
   build:
     - {{ compiler('c') }}
     - make        # [not win]
-    - git         # [win]
-    - cmake
     - m2-patch    # [win]
-    - patch       # [not win]
+    - cmake
 
 test:
   commands:
@@ -52,8 +49,8 @@ about:
     out of GIFs since 1989. It is deployed everywhere you can think of and some places you
     probably can't - graphics applications and web browsers on multiple operating systems,
     game consoles, smartphones, and likely your ATM too.
-  dev_url: https://giflib.sourceforge.net
-  doc_url: https://giflib.sourceforge.net
+  dev_url: https://sourceforge.net/p/giflib/code/ci/master/tree
+  doc_url: https://sourceforge.net/p/giflib/wiki/Home
 
 extra:
   recipe-maintainers:
