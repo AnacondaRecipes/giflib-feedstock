@@ -1,0 +1,5 @@
+anaconda_config_version: 1
+upstream_sources:
+  - webpage:
+      url: https://sourceforge.net/projects/giflib/files/
+      regex: (?:.*)giflib-(.*)\.tar\.gz
